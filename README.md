@@ -135,6 +135,9 @@ df.info()
 a = df.hist(figsize = (20,20))
 ```
 ![image](ml1.png)
+
+
+
 ```python
 ```
 - kode dibawah ini digunakan untuk membuat visualisasi histogram distribusi data pada kolom 'sex' dengan menyesuaikan lebar garis dan warna batas histogram menggunakan Seaborn.
@@ -143,12 +146,18 @@ sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
 ![image](ml2.png)
 
+
+
+
 - Dengan menggunakan countplot, Anda dapat dengan mudah melihat distribusi jumlah data untuk setiap nilai pada kolom 'fbs', serta membedakan antara nilai 'output' yang berbeda menggunakan warna.
 ```python
 sns.countplot(data=df,x='fbs',hue='output')
 plt.xticks(rotation=45,ha='right');
 ```
 ![image](ml3.png)
+
+
+
 
 - untuk memvisualisasikan KDE plot untuk setiap kolom DataFrame, dibagi berdasarkan nilai 'output' (0 atau 1), sehingga memungkinkan analisis distribusi masing-masing fitur tergantung pada kelompok 'output'.
 ```python
@@ -171,6 +180,7 @@ plt.show()
 ![image](ml4.png)
 
 
+
 - Dengan menggunakan visualisasi heatmap ini, kita dapat dengan mudah melihat pola korelasi antara kolom target dan variabel-variabel lain dalam DataFrame, membantu dalam pemahaman hubungan antar variabel dalam konteks analisis data.
 ```python
 corr = df.corr()
@@ -186,11 +196,17 @@ plt.show()
 ```
 ![image](ml5.png)
 
+
+
+
 - membantu analisis cepat terhadap keberadaan nilai-nilai yang hilang dalam dataset, memungkinkan pengguna untuk mengidentifikasi pola atau tren terkait dengan kekosongan data. Jika terdapat banyak nilai kosong dalam suatu kolom atau baris, peta panas dapat membantu menyoroti area yang memerlukan perhatian lebih lanjut dalam proses pembersihan atau pengolahan data.
 ```python
 sns.heatmap(df.isnull())
 ```
 ![image](ml6.png)
+
+
+
 
 - kode dibawah ini  memberikan visualisasi mengenai distribusi data pada variabel "sex" dan "output" dengan memperhatikan kategori "caa" menggunakan peta panas dan plot viola.
 ```python
@@ -198,15 +214,8 @@ sns.catplot(x= "sex", y = "output", hue = "caa",kind = "violin", data = df);
 ```
 ![image](ml7.png)
 
-```python
 
-```
-```python
 
-```
-```python
-
-```
 # preprocesssing
 
 -  perintah untuk menghapus kolom 'age' dari dataframe (df).
@@ -304,6 +313,7 @@ plt.show()
 ![image](ml8.png)
 
 
+
 - Dengan visualisasi ini, kita dapat melihat perbandingan antara kasus "No Heart Attack" dan "Heart Attack" dalam dataset, baik dalam bentuk diagram pie maupun countplot.
 ```python
 palette = ["#FF0000", "#0000FF"]
@@ -346,6 +356,7 @@ plt.show()
 ![image](ml9.png)
 
 
+
 - digunakan untuk melakukan evaluasi performa dari model yang telah dihasilkan dengan menggunakan algoritma k-Nearest Neighbors (k-NN). 
 ```python
 y_pred = knn.predict(X_test)
@@ -361,6 +372,8 @@ plt.xlabel('Predicted label')
 plt.show()
 ```
 ![image](ml10.png)
+
+
 
 
 # save model
