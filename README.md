@@ -89,56 +89,51 @@ from google.colab import files
 files.upload()
 ```
 ```python
-
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/kaggle.json
+!chmod 600 ~/.kaggle/kaggle.json
+!ls ~/.kaggle
 ```
 ```python
-
+!kaggle datasets download -d rashikrahmanpritom/heart-attack-analysis-prediction-dataset
 ```
-```python
 
-```
 # import libary yang digunakan
 ```python
-
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+import pickle
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from matplotlib.colors import ListedColorma
 ```
 # data discovery
 ```python
-
+df = pd.read_csv('/content/heart-attack-analysis-prediction-dataset/heart.csv')
 ```
 ```python
-
+df.head()
 ```
 ```python
-
+df.describe()
 ```
 ```python
-
+df.describe().T
 ```
 ```python
-
+df.isnull()
 ```
 ```python
-
-```
-```python
-
-```
-```python
-
-```
-```python
-
-```
-```python
-
-```
-```python
-
+df.info()
 ```
 # EDA
 
 ```python
-
+a = df.hist(figsize = (20,20))
+![image](ml1.png)
 ```
 ```python
 
