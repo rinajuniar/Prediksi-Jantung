@@ -134,10 +134,9 @@ df.info()
 ```python
 a = df.hist(figsize = (20,20))
 ```
-```python
 ![image](ml1.png)
+```python
 ```
-
 ```python
 sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
