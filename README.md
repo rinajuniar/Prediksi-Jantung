@@ -132,25 +132,51 @@ df.info()
 # EDA
 
 ```python
+* kode tersebut akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
 a = df.hist(figsize = (20,20))
-```
-```python
 ![image](ml1.png)
 ```
 ```python
-
+sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
 ```python
-
+sns.countplot(data=df,x='fbs',hue='output')
+plt.xticks(rotation=45,ha='right');
 ```
 ```python
+num_columns = len(df.columns) - 1
+num_rows = (num_columns + 1) // 2
 
+plt.figure(figsize=(15, 5*num_rows))
+
+
+for i, column in enumerate(df.columns.drop('output')):
+    plt.subplot(num_rows, 2, i+1)
+    sns.kdeplot(data=df[df['output'] == 0][column], label='output=0', fill=True)
+    sns.kdeplot(data=df[df['output'] == 1][column], label='output=1', fill=True)
+    plt.title(f'KDE plot of {column} grouped by output')
+    plt.legend()
+
+plt.tight_layout()
+plt.show()
 ```
 ```python
+corr = df.corr()
 
+target_corr = corr['output'].drop('output')
+
+sns.set(font_scale=1.2)
+sns.set_style("white")
+sns.set_palette("PuBuGn_d")
+sns.heatmap(target_corr.to_frame(), cmap="coolwarm", annot=True, fmt='.2f')
+plt.title('Correlation with Target Column')
+plt.show()
 ```
 ```python
-
+sns.heatmap(df.isnull())
+```
+```python
+sns.catplot(x= "sex", y = "output", hue = "caa",kind = "violin", data = df);
 ```
 ```python
 
@@ -163,29 +189,57 @@ a = df.hist(figsize = (20,20))
 ```
 # preprocesssing
 ```python
-
+df=df.drop(['age'],axis=1)
 ```
 ```python
-
+df=df.drop(['trtbps'],axis=1)
 ```
 ```python
-
+df=df.drop(['chol'],axis=1)
 ```
 ```python
-
+df=df.drop(['thalachh'],axis=1)
 ```
 ```python
-
+df=df.drop(['oldpeak'],axis=1)
+```
+```python
+atribut = ['sex','cp','fbs','restecg','exng','slp','caa','thall']
+x = df[atribut]
+y = df['output']
+```
+```python
+x_train, X_test, y_train, y_test = train_test_split(x,y,random_state=90)
+y_test.shape
 ```
 ```python
 
 ```
 # MODELING
 ```python
+knn = KNeighborsClassifier(n_neighbors=6)
+knn.fit(x_train, y_train)
+y_pred1=knn.predict(X_test)
 
+score = knn.score(X_test, y_test)
+print('Akurasi Model KNN =',score
+
+Akurasi Model KNN = 0.7763157894736842
 ```
 ```python
+input_data = (0,	0,	1,	1,	1,	1,	2, 3)
 
+input_data_as_numpy_array = np.array(input_data)
+
+input_data_reshape = input_data_as_numpy_array.reshape(1,-1)
+
+prediction = knn.predict(input_data_reshape)
+print(prediction)
+
+if (prediction):
+    print("Pasien Terkena Penyakit Jantung.")
+else:
+    print("Pasien Tidak Terkena Penyakit Jantung.")
 ```
 ```python
 
@@ -201,26 +255,81 @@ a = df.hist(figsize = (20,20))
 ```
 # visualisasi
 ```python
+train_acc = {}
+test_acc = {}
+neighbors = np.arange(1, 26)
 
+for neighbor in neighbors:
+  knn =  KNeighborsClassifier(n_neighbors=neighbor)
+  knn.fit(x_train, y_train)
+  train_acc[neighbor] = knn.score(x_train, y_train)
 ```
 ```python
-
+plt.figure(figsize=(12,8))
+plt.title("KNN: Varying Number of Neighbors")
+plt.plot(neighbors, train_acc.values(), label="Training Accuracy")
+plt.plot(neighbors, train_acc.values(), label="Testing Accuracy")
+plt.legend()
+plt.xlabel("Number of Neighbors")
+plt.ylabel("Accuracy")
+plt.show()
 ```
 ```python
+palette = ["#FF0000", "#0000FF"]
 
+Diabetes_count = df['output'].value_counts()[1]
+No_Diabetes_count = df['output'].value_counts()[0]
+total_count = len(df)
+diabetes_percentage = (Diabetes_count / total_count) * 100
+no_diabetes_percentage = (No_Diabetes_count / total_count) * 100
+
+pie_values = [no_diabetes_percentage, diabetes_percentage]
+
+colors = ['lightblue', 'lightcoral']
+
+fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 7))
+# First subplot - Pie chart
+plt.subplot(1, 2, 1)
+plt.pie(pie_values, labels=['No Heart Attack', 'Heart Attack'],
+        autopct='%1.2f%%',
+        startangle=90,
+        explode=(0.1, 0.1),
+        colors=colors,  # Use the defined colors
+        wedgeprops={'edgecolor': 'black', 'linewidth': 1, 'antialiased': True})
+plt.title('No Heart Attack vs Heart Attack')
+
+# Second subplot - Countplot
+plt.subplot(1, 2, 2)
+ax = sns.countplot(data=df,
+                x='output',
+                palette=colors,  # Use the defined colors
+                edgecolor='black')
+for i in ax.containers:
+    ax.bar_label(i)
+ax.set_xticks([0, 1])  # Set ticks manually to match the categories
+ax.set_xticklabels(['No Heart Attack', 'Heart Attack'])
+
+plt.title('No Heart Attack vs Heart Attack')
+plt.show()
 ```
 ```python
-
+y_pred = knn.predict(X_test)
+confusion_matrix(y_test,y_pred)
 ```
 ```python
-
+sns.heatmap((confusion_matrix(y_test,y_pred)), annot=True, cmap="YlGnBu" ,fmt='g')
+plt.title('Confusion matrix', y=1.05)
+plt.ylabel('Actual label')
+plt.xlabel('Predicted label')
+plt.show()
 ```
 # save model
 ```python
-
+df.to_csv('heart-data.csv')
 ```
 ```python
-
+filename = 'heart.sav'
+pickle.dump(knn,open(filename,'wb'))
 ```
 ## Evaluation
 
