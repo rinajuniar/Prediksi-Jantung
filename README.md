@@ -133,10 +133,9 @@ df.info()
 
 ```python
 a = df.hist(figsize = (20,20))
-![image](ml1.png)
 ```
 ```python
-
+![image](ml1.png)
 ```
 ```python
 
