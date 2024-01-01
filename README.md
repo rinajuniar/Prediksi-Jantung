@@ -137,13 +137,20 @@ a = df.hist(figsize = (20,20))
 ![image](ml1.png)
 ```python
 ```
+-kode tersebut digunakan untuk membuat visualisasi histogram distribusi data pada kolom 'sex' dengan menyesuaikan lebar garis dan warna batas histogram menggunakan Seaborn.
 ```python
 sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
+![image](ml2.png)
+
+-Dengan menggunakan countplot, Anda dapat dengan mudah melihat distribusi jumlah data untuk setiap nilai pada kolom 'fbs', serta membedakan antara nilai 'output' yang berbeda menggunakan warna.
 ```python
 sns.countplot(data=df,x='fbs',hue='output')
 plt.xticks(rotation=45,ha='right');
 ```
+![image](ml3.png)
+
+- untuk memvisualisasikan KDE plot untuk setiap kolom DataFrame, dibagi berdasarkan nilai 'output' (0 atau 1), sehingga memungkinkan analisis distribusi masing-masing fitur tergantung pada kelompok 'output'.
 ```python
 num_columns = len(df.columns) - 1
 num_rows = (num_columns + 1) // 2
@@ -161,6 +168,9 @@ for i, column in enumerate(df.columns.drop('output')):
 plt.tight_layout()
 plt.show()
 ```
+![image](ml4.png)
+
+
 ```python
 corr = df.corr()
 
