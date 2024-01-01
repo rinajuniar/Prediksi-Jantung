@@ -130,14 +130,14 @@ df.isnull()
 df.info()
 ```
 # EDA
-- kode tersebut akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
+- kode dibawah ini akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
 ```python
 a = df.hist(figsize = (20,20))
 ```
 ![image](ml1.png)
 ```python
 ```
-- kode tersebut digunakan untuk membuat visualisasi histogram distribusi data pada kolom 'sex' dengan menyesuaikan lebar garis dan warna batas histogram menggunakan Seaborn.
+- kode dibawah ini digunakan untuk membuat visualisasi histogram distribusi data pada kolom 'sex' dengan menyesuaikan lebar garis dan warna batas histogram menggunakan Seaborn.
 ```python
 sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
@@ -192,7 +192,7 @@ sns.heatmap(df.isnull())
 ```
 ![image](ml6.png)
 
-- kode tersebut memberikan visualisasi mengenai distribusi data pada variabel "sex" dan "output" dengan memperhatikan kategori "caa" menggunakan peta panas dan plot viola.
+- kode dibawah ini  memberikan visualisasi mengenai distribusi data pada variabel "sex" dan "output" dengan memperhatikan kategori "caa" menggunakan peta panas dan plot viola.
 ```python
 sns.catplot(x= "sex", y = "output", hue = "caa",kind = "violin", data = df);
 ```
@@ -208,26 +208,36 @@ sns.catplot(x= "sex", y = "output", hue = "caa",kind = "violin", data = df);
 
 ```
 # preprocesssing
+
+-  perintah untuk menghapus kolom 'age' dari dataframe (df).
 ```python
 df=df.drop(['age'],axis=1)
 ```
+-  perintah untuk menghapus kolom 'trtbps' dari dataframe (df). 
 ```python
 df=df.drop(['trtbps'],axis=1)
 ```
+- perintah untuk menghapus kolom 'chol' dari dataframe (df).
 ```python
 df=df.drop(['chol'],axis=1)
 ```
+- perintah untuk menghapus kolom 'thalachh' dari dataframe (df).
 ```python
 df=df.drop(['thalachh'],axis=1)
 ```
+- perintah untuk menghapus kolom 'oldpeak' dari dataframe (df).
 ```python
 df=df.drop(['oldpeak'],axis=1)
 ```
+
+- memisahkan data menjadi variabel independen (x) yang berisi fitur-fitur yang ingin digunakan untuk prediksi dan variabel dependen (y) yang berisi label atau output yang ingin diprediksi.
 ```python
 atribut = ['sex','cp','fbs','restecg','exng','slp','caa','thall']
 x = df[atribut]
 y = df['output']
 ```
+
+- Bentuk ini memberikan informasi tentang jumlah baris atau data uji yang ada pada dataset. 
 ```python
 x_train, X_test, y_train, y_test = train_test_split(x,y,random_state=90)
 y_test.shape
@@ -236,6 +246,8 @@ y_test.shape
 
 ```
 # MODELING
+
+- untuk membuat model klasifikasi dan mengukur akurasinya pada data uji.
 ```python
 knn = KNeighborsClassifier(n_neighbors=6)
 knn.fit(x_train, y_train)
@@ -246,6 +258,8 @@ print('Akurasi Model KNN =',score
 
 Akurasi Model KNN = 0.7763157894736842
 ```
+
+- digunakan untuk melakukan prediksi terkait penyakit jantung
 ```python
 input_data = (0,	0,	1,	1,	1,	1,	2, 3)
 
@@ -261,19 +275,10 @@ if (prediction):
 else:
     print("Pasien Tidak Terkena Penyakit Jantung.")
 ```
-```python
 
-```
-```python
-
-```
-```python
-
-```
-```python
-
-```
 # visualisasi
+
+- Kode dibawah inidigunakan untuk mengukur akurasi model K-Nearest Neighbors (KNN) pada data pelatihan (train) dan data uji (test) dengan variasi jumlah tetangga (neighbors) dari 1 hingga 25.
 ```python
 train_acc = {}
 test_acc = {}
@@ -284,6 +289,8 @@ for neighbor in neighbors:
   knn.fit(x_train, y_train)
   train_acc[neighbor] = knn.score(x_train, y_train)
 ```
+
+- grafik ini membantu visualisasi bagaimana akurasi model KNN bervariasi dengan jumlah tetangga yang berbeda pada data latih dan data uji. Ini dapat membantu pemahaman tentang kinerja model KNN tergantung pada parameter jumlah tetangga yang digunakan
 ```python
 plt.figure(figsize=(12,8))
 plt.title("KNN: Varying Number of Neighbors")
@@ -294,6 +301,10 @@ plt.xlabel("Number of Neighbors")
 plt.ylabel("Accuracy")
 plt.show()
 ```
+![image](ml8.png)
+
+
+- Dengan visualisasi ini, kita dapat melihat perbandingan antara kasus "No Heart Attack" dan "Heart Attack" dalam dataset, baik dalam bentuk diagram pie maupun countplot.
 ```python
 palette = ["#FF0000", "#0000FF"]
 
@@ -332,10 +343,16 @@ ax.set_xticklabels(['No Heart Attack', 'Heart Attack'])
 plt.title('No Heart Attack vs Heart Attack')
 plt.show()
 ```
+![image](ml9.png)
+
+
+- digunakan untuk melakukan evaluasi performa dari model yang telah dihasilkan dengan menggunakan algoritma k-Nearest Neighbors (k-NN). 
 ```python
 y_pred = knn.predict(X_test)
 confusion_matrix(y_test,y_pred)
 ```
+
+- heatmap yang memvisualisasikan matriks kebingungan, membantu dalam memahami seberapa baik model klasifikasi memprediksi kelas-kelas tertentu.
 ```python
 sns.heatmap((confusion_matrix(y_test,y_pred)), annot=True, cmap="YlGnBu" ,fmt='g')
 plt.title('Confusion matrix', y=1.05)
@@ -343,6 +360,9 @@ plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 plt.show()
 ```
+![image](ml10.png)
+
+
 # save model
 ```python
 df.to_csv('heart-data.csv')
