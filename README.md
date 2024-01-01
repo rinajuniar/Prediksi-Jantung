@@ -83,107 +83,92 @@ thalach : tercapai denyut jantung maksimal
 
 ## Data Preparation
 
-DESKRIPSI LIBRARY
+# import dataset
 ```python
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import  LogisticRegression
-from sklearn.metrics import accuracy_score
+from google.colab import files
+files.upload()
+```
+```python
 
 ```
-MEMANGGIL DATASET
 ```python
-df = pd.read_csv('diabetes.csv')
-```
-DESKRIPSI DATASET
-```python
-df.head()
+
 ```
 ```python
-df.info()
+
+```
+# import libary yang digunakan
+```python
+
+```
+# data discovery
+```python
+
 ```
 ```python
-sns.heatmap(df.isnull())
-```
-![image](image1.png)
-```pyyhon
-Glucose = df.groupby('Age').count()[['BMI']].sort_values(by='BMI').reset_index()
-Glucose = Glucose.rename(columns={'BMI' :'count'})
+
 ```
 ```python
-plt.figure(figsize=(15,5))
-sns.barplot(x=Glucose['Age'],y=Glucose['count'],color='purple')
+
 ```
-![image](image2.png)
+```python
+
 ```
-PISAHKAN DATA ATRIBUT DENGAN LABEL
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+# EDA
+
+![image](ml1.png)
 
 ```python
-X = diabetes_data.drop(columns = 'Outcome', axis=1)
-Y = diabetes_data['Outcome']
-```
-```python
-print(X)
-```
 
-```python
-print(Y)
-```
-PISAHKAN DATA TRAINING DAN DATA TESTING
-```python
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, stratify=Y, random_state=2 )
 ```
 ```python
-print(X.shape, X_train.shape, X_test.shape)
-```
-MEMBUAT MODEL TRAINING
-```python
-model = LogisticRegression()
-```
-```python
-model.fit(X_train, Y_train)
-```
-EVALUASI MODEL 
-```X_train_prediction = model.predict(X_train)
-training_data_accuracy = accuracy_score(X_train_prediction, Y_train)
-```
-```pyhton
-print('akurasi data training :', training_data_accuracy)
-```
-```python
-X_test_prediction = model.predict(X_test)
-test_data_accuracy =accuracy_score(X_test_prediction, Y_test)
-```
-```python
-print('akurasi data testing :', test_data_accuracy)
-```
-```python
-input_data = (6, 148, 72, 35, 0, 33.6, 0.267, 50)
 
-input_data_as_numpy_array = np.asarray(input_data)
-
-input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
-
-prediction = model.predict(input_data_reshaped)
-print(prediction)
-
-if (prediction[0]==0):
-  print('Pasien Tidak Terkena Penyakit Diabetes')
-else:
-  print('Pasien Terkena Penyakit Diabetes')
 ```
-SIMPAN MODEL
 ```python
-import pickle
-```
-```pyhthon
-filename = 'diabetes.sav'
-pickle.dump(model, open(filename, 'wb'))
-```
 
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
 ## Evaluation
 
 ```python
