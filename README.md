@@ -130,20 +130,20 @@ df.isnull()
 df.info()
 ```
 # EDA
--kode tersebut akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
+- kode tersebut akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
 ```python
 a = df.hist(figsize = (20,20))
 ```
 ![image](ml1.png)
 ```python
 ```
--kode tersebut digunakan untuk membuat visualisasi histogram distribusi data pada kolom 'sex' dengan menyesuaikan lebar garis dan warna batas histogram menggunakan Seaborn.
+- kode tersebut digunakan untuk membuat visualisasi histogram distribusi data pada kolom 'sex' dengan menyesuaikan lebar garis dan warna batas histogram menggunakan Seaborn.
 ```python
 sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
 ![image](ml2.png)
 
--Dengan menggunakan countplot, Anda dapat dengan mudah melihat distribusi jumlah data untuk setiap nilai pada kolom 'fbs', serta membedakan antara nilai 'output' yang berbeda menggunakan warna.
+- Dengan menggunakan countplot, Anda dapat dengan mudah melihat distribusi jumlah data untuk setiap nilai pada kolom 'fbs', serta membedakan antara nilai 'output' yang berbeda menggunakan warna.
 ```python
 sns.countplot(data=df,x='fbs',hue='output')
 plt.xticks(rotation=45,ha='right');
@@ -171,6 +171,7 @@ plt.show()
 ![image](ml4.png)
 
 
+- Dengan menggunakan visualisasi heatmap ini, kita dapat dengan mudah melihat pola korelasi antara kolom target dan variabel-variabel lain dalam DataFrame, membantu dalam pemahaman hubungan antar variabel dalam konteks analisis data.
 ```python
 corr = df.corr()
 
@@ -183,12 +184,20 @@ sns.heatmap(target_corr.to_frame(), cmap="coolwarm", annot=True, fmt='.2f')
 plt.title('Correlation with Target Column')
 plt.show()
 ```
+![image](ml5.png)
+
+- membantu analisis cepat terhadap keberadaan nilai-nilai yang hilang dalam dataset, memungkinkan pengguna untuk mengidentifikasi pola atau tren terkait dengan kekosongan data. Jika terdapat banyak nilai kosong dalam suatu kolom atau baris, peta panas dapat membantu menyoroti area yang memerlukan perhatian lebih lanjut dalam proses pembersihan atau pengolahan data.
 ```python
 sns.heatmap(df.isnull())
 ```
+![image](ml6.png)
+
+- kode tersebut memberikan visualisasi mengenai distribusi data pada variabel "sex" dan "output" dengan memperhatikan kategori "caa" menggunakan peta panas dan plot viola.
 ```python
 sns.catplot(x= "sex", y = "output", hue = "caa",kind = "violin", data = df);
 ```
+![image](ml7.png)
+
 ```python
 
 ```
