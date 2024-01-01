@@ -130,12 +130,16 @@ df.isnull()
 df.info()
 ```
 # EDA
-
 ```python
-* kode tersebut akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
+-kode tersebut akan menghasilkan histogram untuk setiap kolom numerik dalam DataFrame 'df' dengan ukuran gambar 20x20. Histogram adalah representasi grafis dari distribusi frekuensi data, yang membantu dalam memahami pola dan karakteristik data numerik.
+```
+```python
 a = df.hist(figsize = (20,20))
+```
+```python
 ![image](ml1.png)
 ```
+
 ```python
 sns.distplot(df['sex'], hist_kws = dict(linewidth = 1, edgecolor = 'k'))
 ```
