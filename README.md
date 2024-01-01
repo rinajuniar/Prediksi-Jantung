@@ -137,8 +137,6 @@ files.upload()
 ```
 # EDA
 
-![image](ml1.png)
-
 ```python
 
 ```
@@ -163,6 +161,67 @@ files.upload()
 ```python
 
 ```
+```python
+
+```
+```python
+
+```
+# preprocesssing
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+# MODELING
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+# visualisasi
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+```python
+
+```
+# save model
 ```python
 
 ```
@@ -190,4 +249,4 @@ print('akurasi data testing :', test_data_accuracy)
 
 akurasi adalah metrik evaluasi yang mengukur seberapa baik model membuat prediksi yang benar dari total prediksi yang dilakukan. dalam konteks klasifikasi, akurasi memberikan gambaran mengenai seberapa sering model memprediksi kelas yang benar, baik kelas itu positif maupun negatif.
 ## Deployment
-https://my-apk-estimasi-diabetes.streamlit.app//
+https://prediksi-jantung-by-rinajuniar.streamlit.app/
