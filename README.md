@@ -301,7 +301,7 @@ for neighbor in neighbors:
   knn.fit(x_train, y_train)
   train_acc[neighbor] = knn.score(x_train, y_train)
 ```
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 - grafik ini membantu visualisasi bagaimana akurasi model KNN bervariasi dengan jumlah tetangga yang berbeda pada data latih dan data uji. Ini dapat membantu pemahaman tentang kinerja model KNN tergantung pada parameter jumlah tetangga yang digunakan
 ```python
 plt.figure(figsize=(12,8))
@@ -315,8 +315,7 @@ plt.show()
 ```
 ![image](ml8.png)
 
-
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 - Dengan visualisasi ini, kita dapat melihat perbandingan antara kasus "No Heart Attack" dan "Heart Attack" dalam dataset, baik dalam bentuk diagram pie maupun countplot.
 ```python
 palette = ["#FF0000", "#0000FF"]
@@ -358,7 +357,7 @@ plt.show()
 ```
 ![image](ml9.png)
 
-
+------------------------------------------------------------------------------------------------------------------------------
 
 - digunakan untuk melakukan evaluasi performa dari model yang telah dihasilkan dengan menggunakan algoritma k-Nearest Neighbors (k-NN). 
 ```python
@@ -376,9 +375,7 @@ plt.show()
 ```
 ![image](ml10.png)
 
-
-
-
+---------------------------------------------------------------------------------------------------------------------------
 # save model
 
 - untuk save dataset yang sudah dilakukan prepocessing dan modeling 
