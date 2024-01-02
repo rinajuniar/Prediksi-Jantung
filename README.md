@@ -100,6 +100,11 @@ files.upload()
 ```python
 !kaggle datasets download -d rashikrahmanpritom/heart-attack-analysis-prediction-dataset
 ```
+```python
+!mkdir heart-attack-analysis-prediction-dataset
+!unzip heart-attack-analysis-prediction-dataset -d heart-attack-analysis-prediction-dataset
+!ls heart-attack-analysis-prediction-dataset
+```
 
 # import libary yang digunakan
 ```python
