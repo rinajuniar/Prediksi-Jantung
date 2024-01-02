@@ -119,7 +119,7 @@ from matplotlib.colors import ListedColorma
 ```python
 df = pd.read_csv('/content/heart-attack-analysis-prediction-dataset/heart.csv')
 ```
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 -  kode ini digunakan untuk melihat beberapa baris pertama dari DataFrame df. 
 ```python
 df.head()
