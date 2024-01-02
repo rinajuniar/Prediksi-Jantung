@@ -17,7 +17,7 @@ Bagian laporan ini mencakup:
 - Keterbatasan Sistem Prediksi Heart Attack yang Ada:
 Saat ini, terdapat keterbatasan dalam sistem prediksi serangan jantung yang tersedia. Beberapa model prediksi belum sepenuhnya akurat dan sensitif, menyebabkan tingkat kepercayaan yang rendah pada hasil prediksi tersebut.
 
--Kurangnya Integrasi Data yang Komprehensif:
+- Kurangnya Integrasi Data yang Komprehensif:
 Kurangnya integrasi data yang komprehensif menjadi hambatan dalam mengembangkan sistem prediksi serangan jantung yang efektif. Informasi medis dari berbagai sumber seringkali tidak terpadu dengan baik, mengakibatkan kurangnya kelengkapan data.
 
 - Ketidakmampuan Mengidentifikasi Faktor Risiko yang Spesifik:
