@@ -225,38 +225,41 @@ sns.catplot(x= "sex", y = "output", hue = "caa",kind = "violin", data = df);
 ```python
 df=df.drop(['age'],axis=1)
 ```
+---------------------------------------------------------------
 -  perintah untuk menghapus kolom 'trtbps' dari dataframe (df). 
 ```python
 df=df.drop(['trtbps'],axis=1)
 ```
+---------------------------------------------------------------
 - perintah untuk menghapus kolom 'chol' dari dataframe (df).
 ```python
 df=df.drop(['chol'],axis=1)
 ```
+----------------------------------------------------------------
 - perintah untuk menghapus kolom 'thalachh' dari dataframe (df).
 ```python
 df=df.drop(['thalachh'],axis=1)
 ```
+-------------------------------------------------------------
 - perintah untuk menghapus kolom 'oldpeak' dari dataframe (df).
 ```python
 df=df.drop(['oldpeak'],axis=1)
 ```
-
+---------------------------------------------------------------------
 - memisahkan data menjadi variabel independen (x) yang berisi fitur-fitur yang ingin digunakan untuk prediksi dan variabel dependen (y) yang berisi label atau output yang ingin diprediksi.
 ```python
 atribut = ['sex','cp','fbs','restecg','exng','slp','caa','thall']
 x = df[atribut]
 y = df['output']
 ```
-
+-----------------------------------------------------------------------------
 - Bentuk ini memberikan informasi tentang jumlah baris atau data uji yang ada pada dataset. 
 ```python
 x_train, X_test, y_train, y_test = train_test_split(x,y,random_state=90)
 y_test.shape
 ```
-```python
+----------------------------------------------------------------------------------
 
-```
 # MODELING
 
 - untuk membuat model klasifikasi dan mengukur akurasinya pada data uji.
@@ -270,7 +273,7 @@ print('Akurasi Model KNN =',score
 
 Akurasi Model KNN = 0.7763157894736842
 ```
-
+-------------------------------------------------------------------------------
 - digunakan untuk melakukan prediksi terkait penyakit jantung
 ```python
 input_data = (0,	0,	1,	1,	1,	1,	2, 3)
