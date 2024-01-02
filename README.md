@@ -84,6 +84,9 @@ thalach : tercapai denyut jantung maksimal
 ## Data Preparation
 
 # import dataset
+
+- kode ini digunakan untuk mengimprot dataset langsung dari kaggle tanpa mendownload data csv
+  
 ```python
 from google.colab import files
 files.upload()
@@ -111,21 +114,29 @@ from sklearn.neighbors import KNeighborsClassifier
 from matplotlib.colors import ListedColorma
 ```
 # data discovery
+
+- Kode Python tersebut digunakan untuk membaca file CSV yang berisi data mengenai analisis dan prediksi serangan jantung
 ```python
 df = pd.read_csv('/content/heart-attack-analysis-prediction-dataset/heart.csv')
 ```
+
+-  kode ini digunakan untuk melihat beberapa baris pertama dari DataFrame df. 
 ```python
 df.head()
 ```
+-  kode ini berfungsi untuk memberikan ringkasan statistik dari DataFrame yang disimpan dalam variabel
 ```python
 df.describe()
 ```
+-  kode ini digunakan untuk menghasilkan ringkasan statistik deskriptif dari sebuah DataFrame, dan kemudian mentranspose (membalik) hasilnya. 
 ```python
 df.describe().T
 ```
+- kode ini digunakan untuk memeriksa keberadaan nilai-nilai null (kosong) dalam suatu DataFrame (biasanya menggunakan library pandas). DataFrame ini sering digunakan untuk menyimpan dan memanipulasi data dalam bentuk tabel.
 ```python
 df.isnull()
 ```
+- kode ini digunakan untuk memberikan informasi ringkas tentang DataFrame tersebut. Outputnya mencakup beberapa informasi penting seperti jumlah baris dan kolom, nama kolom, tipe data setiap kolom, serta jumlah nilai yang tidak kosong (non-null) pada setiap kolom.
 ```python
 df.info()
 ```
@@ -377,9 +388,13 @@ plt.show()
 
 
 # save model
+
+- untuk save dataset yang sudah dilakukan prepocessing dan modeling 
 ```python
 df.to_csv('heart-data.csv')
 ```
+
+- utuk simpan model menggunakan pickle
 ```python
 filename = 'heart.sav'
 pickle.dump(knn,open(filename,'wb'))
@@ -387,22 +402,20 @@ pickle.dump(knn,open(filename,'wb'))
 ## Evaluation
 
 ```python
-X_train_prediction = model.predict(X_train)
-training_data_accuracy = accuracy_score(X_train_prediction, Y_train)
-```
-```python
-print('akurasi data training :', training_data_accuracy)
-```
-0.7850162866449512
-```python
-X_test_prediction = model.predict(X_test)
-test_data_accuracy =accuracy_score(X_test_prediction, Y_test)
-```
-```python
-print('akurasi data testing :', test_data_accuracy)
-```
-0.7532467532467533
+knn = KNeighborsClassifier(n_neighbors=6)
+knn.fit(x_train, y_train)
+y_pred1=knn.predict(X_test)
 
-akurasi adalah metrik evaluasi yang mengukur seberapa baik model membuat prediksi yang benar dari total prediksi yang dilakukan. dalam konteks klasifikasi, akurasi memberikan gambaran mengenai seberapa sering model memprediksi kelas yang benar, baik kelas itu positif maupun negatif.
+score = knn.score(X_test, y_test)
+print('Akurasi Model KNN =',score
+
+
+Akurasi Model KNN = 0.7763157894736842
+
+```
+0.7763157894736842
+
+
+Akurasi dalam konteks klasifikasi menggunakan algoritma k-Nearest Neighbors (k-NN) mengukur sejauh mana model k-NN mampu memprediksi kelas yang benar untuk set data uji. Akurasi dinyatakan sebagai persentase dari jumlah prediksi yang benar dibandingkan dengan jumlah total data uji
 ## Deployment
 https://prediksi-jantung-by-rinajuniar.streamlit.app/
